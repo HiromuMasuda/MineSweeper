@@ -12,17 +12,23 @@ import jp.ne.kuramae.torix.lecture.ms.core.Player;
  */
 public class SamplePlayer extends Player {
 
+  static int N = 100;
+  static float winCount = 0;
+
   static public void main(String[] args){
     //ここで自分のプレイヤーを作成する
     Player player = new SamplePlayer();
 
-    MineSweeper mineSweeper = new MineSweeper();
+    MineSweeper mineSweeper = new MineSweeper(0);
     mineSweeper.setRandomSeed(0);
     //MineSweeper mineSweeper = new MineSweeper(lv); //lv=0,1,2でレベルを指定して作成
     //MineSweeper mineSweeper = new MineSweeper(width, height, bombNum);
 
+    for(int i = 0; i < N; i++){
+      mineSweeper.start(player);
+    }
 
-    mineSweeper.start(player);
+    System.out.println("勝率: " + winCount/N*100 + "%");
   }
 
   /**
@@ -47,6 +53,10 @@ public class SamplePlayer extends Player {
           }
         }
       }
+    }
+
+    if(isClear()){
+      winCount += 1;
     }
   }
 }
