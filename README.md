@@ -23,3 +23,7 @@ java SamplePlayer
 初級 75%
 中級 50%
 上級 5%
+
+# Java
+
+- [Javaの道](http://www.javaroad.jp/)
