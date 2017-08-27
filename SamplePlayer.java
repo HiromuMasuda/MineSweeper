@@ -7,7 +7,7 @@ import jp.ne.kuramae.torix.lecture.ms.core.Player;
 public class SamplePlayer extends Player {
 
   static int N = 100;
-  static int winCount = 0;
+  static float winCount = 0;
   protected static Flag flag;
 
   static public void main(String[] args){
@@ -22,15 +22,15 @@ public class SamplePlayer extends Player {
       mineSweeper.start(player);
     }
 
-    // System.out.println("勝率: " + winCount/N*100 + "%");
-    System.out.println("勝数: " + winCount + "回");
+    System.out.println("勝率: " + winCount/N*100 + "%");
+    // System.out.println("勝数: " + winCount + "回");
   }
 
   @Override
   protected void start() {
-    flag = new Flag();
+    flag = new Flag(getHeight(), getWidth());
 
-    LOOP:while(isClear() && !isGameOver()){
+    LOOP:while(!isClear() && !isGameOver()){
       for(int y = 0; y < getHeight(); y++){
         for(int x = 0; x < getWidth(); x++){
           int bombNum = getCell(x, y);
@@ -41,11 +41,20 @@ public class SamplePlayer extends Player {
           // Open cell
           if(bombNum < 0 && !flag.isSet(x, y)){
             open(x, y);
+
+            if(checkIsClear()){
+              winCount += 1;
+            }
+
             continue LOOP;
           }
         }
       }
     }
+  }
+
+  private boolean checkIsClear(){
+    return getBombNum() == getMaskedCellCount() - 1 && getBombNum() == flag.getTotalFlagCount();
   }
 
   private void setFlagOrOpenCellAround(int x, int y){

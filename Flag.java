@@ -6,13 +6,11 @@ import jp.ne.kuramae.torix.lecture.ms.core.Player;
 
 public class Flag {
 
-  int width = 9;
-  int height = 9;
   private static boolean[][] flagList;
   private int totalFlagCount;
 
-  public Flag(){
-    flagList = new boolean[width][height];
+  public Flag(int fieldWidth, int fieldHeight){
+    flagList = new boolean[fieldWidth][fieldHeight];
     totalFlagCount = 0;
   }
 
