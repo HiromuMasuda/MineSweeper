@@ -53,6 +53,7 @@ public class SamplePlayer extends Player {
     }
   }
 
+  // 本当はisClear()を使いたい、その場しのぎ
   private boolean checkIsClear(){
     return getBombNum() == getMaskedCellCount() - 1 && getBombNum() == flag.getTotalFlagCount();
   }
