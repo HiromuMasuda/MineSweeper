@@ -27,3 +27,5 @@ java SamplePlayer
 # Java
 
 - [Javaの道](http://www.javaroad.jp/)
+- [マインスイーパーライブラリJavaDoc(リファレンス)](http://syrinx.q.t.u-tokyo.ac.jp/tori/lecture/2014/bprog/doc/)
+- [研究初心者のためのJava講座](http://syrinx.q.t.u-tokyo.ac.jp/tori/java/)
